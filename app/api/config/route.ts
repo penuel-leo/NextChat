@@ -15,7 +15,25 @@ const DANGER_CONFIG = {
   customModels: serverConfig.customModels,
   defaultModel: serverConfig.defaultModel,
   visionModels: serverConfig.visionModels,
+  // 添加各提供商是否可用的标志
+  hasServerOpenAI: !!serverConfig.apiKey,
+  hasServerAzure: serverConfig.isAzure,
+  hasServerGoogle: serverConfig.isGoogle,
+  hasServerAnthropic: serverConfig.isAnthropic,
+  hasServerBaidu: serverConfig.isBaidu,
+  hasServerBytedance: serverConfig.isBytedance,
+  hasServerAlibaba: serverConfig.isAlibaba,
+  hasServerTencent: serverConfig.isTencent,
+  hasServerMoonshot: serverConfig.isMoonshot,
+  hasServerIflytek: serverConfig.isIflytek,
+  hasServerDeepSeek: serverConfig.isDeepSeek,
+  hasServerXAI: serverConfig.isXAI,
+  hasServerChatGLM: serverConfig.isChatGLM,
+  hasServerSiliconFlow: serverConfig.isSiliconFlow,
+  hasServerStability: serverConfig.isStability,
 };
+
+console.log("[Config] Danger config:", DANGER_CONFIG);
 
 declare global {
   type DangerConfig = typeof DANGER_CONFIG;

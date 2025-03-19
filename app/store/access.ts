@@ -142,6 +142,23 @@ const DEFAULT_ACCESS_STATE = {
   defaultModel: "",
   visionModels: "",
 
+  // server provider availability flags
+  hasServerOpenAI: false,
+  hasServerAzure: false,
+  hasServerGoogle: false,
+  hasServerAnthropic: false,
+  hasServerBaidu: false,
+  hasServerBytedance: false,
+  hasServerAlibaba: false,
+  hasServerTencent: false,
+  hasServerMoonshot: false,
+  hasServerIflytek: false,
+  hasServerDeepSeek: false,
+  hasServerXAI: false,
+  hasServerChatGLM: false,
+  hasServerSiliconFlow: false,
+  hasServerStability: false,
+
   // tts config
   edgeTTSVoiceName: "zh-CN-YunxiNeural",
 };
@@ -166,57 +183,67 @@ export const useAccessStore = createPersistStore(
     },
 
     isValidOpenAI() {
-      return ensure(get(), ["openaiApiKey"]);
+      return ensure(get(), ["openaiApiKey"]) || get().hasServerOpenAI;
     },
 
     isValidAzure() {
-      return ensure(get(), ["azureUrl", "azureApiKey", "azureApiVersion"]);
+      return (
+        ensure(get(), ["azureUrl", "azureApiKey", "azureApiVersion"]) ||
+        get().hasServerAzure
+      );
     },
 
     isValidGoogle() {
-      return ensure(get(), ["googleApiKey"]);
+      return ensure(get(), ["googleApiKey"]) || get().hasServerGoogle;
     },
 
     isValidAnthropic() {
-      return ensure(get(), ["anthropicApiKey"]);
+      return ensure(get(), ["anthropicApiKey"]) || get().hasServerAnthropic;
     },
 
     isValidBaidu() {
-      return ensure(get(), ["baiduApiKey", "baiduSecretKey"]);
+      return (
+        ensure(get(), ["baiduApiKey", "baiduSecretKey"]) || get().hasServerBaidu
+      );
     },
 
     isValidByteDance() {
-      return ensure(get(), ["bytedanceApiKey"]);
+      return ensure(get(), ["bytedanceApiKey"]) || get().hasServerBytedance;
     },
 
     isValidAlibaba() {
-      return ensure(get(), ["alibabaApiKey"]);
+      return ensure(get(), ["alibabaApiKey"]) || get().hasServerAlibaba;
     },
 
     isValidTencent() {
-      return ensure(get(), ["tencentSecretKey", "tencentSecretId"]);
+      return (
+        ensure(get(), ["tencentSecretKey", "tencentSecretId"]) ||
+        get().hasServerTencent
+      );
     },
 
     isValidMoonshot() {
-      return ensure(get(), ["moonshotApiKey"]);
+      return ensure(get(), ["moonshotApiKey"]) || get().hasServerMoonshot;
     },
+
     isValidIflytek() {
-      return ensure(get(), ["iflytekApiKey"]);
+      return ensure(get(), ["iflytekApiKey"]) || get().hasServerIflytek;
     },
+
     isValidDeepSeek() {
-      return ensure(get(), ["deepseekApiKey"]);
+      return ensure(get(), ["deepseekApiKey"]) || get().hasServerDeepSeek;
     },
 
     isValidXAI() {
-      return ensure(get(), ["xaiApiKey"]);
+      return ensure(get(), ["xaiApiKey"]) || get().hasServerXAI;
     },
 
     isValidChatGLM() {
-      return ensure(get(), ["chatglmApiKey"]);
+      return ensure(get(), ["chatglmApiKey"]) || get().hasServerChatGLM;
     },
 
     isValidSiliconFlow() {
-      return ensure(get(), ["siliconflowApiKey"]);
+      return ensure(get(), ["siliconflowApiKey"]) || get().hasServerSiliconFlow;
     },
 
     isAuthorized() {
@@ -266,7 +293,7 @@ export const useAccessStore = createPersistStore(
         })
         .then((res: DangerConfig) => {
           console.log("[Config] got config from server", res);
-          set(() => ({ ...res }));
+          set((state) => ({ ...state, ...res }));
         })
         .catch(() => {
           console.error("[Config] failed to fetch config");
