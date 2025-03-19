@@ -328,9 +328,9 @@ export function isModelUsable(model: any, accessStore?: any): boolean {
   }
 
   // 然后检查模型的提供商是否配置了API密钥
-  // if (model.provider?.providerName) {
-  //   return isUsableProvider(model.provider.providerName, accessStore);
-  // }
+  if (model.provider?.providerName) {
+    return isUsableProvider(model.provider.providerName, accessStore);
+  }
 
   // 如果模型没有指定提供商，则假定它可用
   return true;

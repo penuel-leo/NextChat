@@ -548,9 +548,6 @@ const alibabaModes = [
   "qwen-turbo",
   "qwen-plus",
   "qwen-max",
-  "qwen-max-0428",
-  "qwen-max-0403",
-  "qwen-max-0107",
   "qwen-max-longcontext",
   "qwen-omni-turbo",
   "qwen-vl-plus",
@@ -558,9 +555,9 @@ const alibabaModes = [
 ];
 
 const tencentModels = [
+  "hunyuan-lite",
   "hunyuan-pro",
   "hunyuan-standard",
-  "hunyuan-lite",
   "hunyuan-role",
   "hunyuan-functioncall",
   "hunyuan-code",
