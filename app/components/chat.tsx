@@ -786,6 +786,7 @@ export function ChatActions(props: {
             });
             showToast(size);
           }}
+          enableSearch={true}
         />
       )}
 

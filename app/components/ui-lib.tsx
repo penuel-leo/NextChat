@@ -487,6 +487,7 @@ export function Selector<T>(props: {
   onSelection?: (selection: T[]) => void;
   onClose?: () => void;
   multiple?: boolean;
+  enableSearch?: boolean;
 }) {
   const [selectedValues, setSelectedValues] = useState<T[]>(
     Array.isArray(props.defaultSelectedValue)
@@ -494,6 +495,19 @@ export function Selector<T>(props: {
       : props.defaultSelectedValue !== undefined
       ? [props.defaultSelectedValue]
       : [],
+  );
+
+  const [searchText, setSearchText] = useState("");
+
+  const filteredItems = props.items.filter(
+    (item) =>
+      !searchText ||
+      item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      (item.subTitle &&
+        item.subTitle
+          .toString()
+          .toLowerCase()
+          .includes(searchText.toLowerCase())),
   );
 
   const handleSelection = (e: MouseEvent, value: T) => {
@@ -514,8 +528,21 @@ export function Selector<T>(props: {
   return (
     <div className={styles["selector"]} onClick={() => props.onClose?.()}>
       <div className={styles["selector-content"]}>
+        <div
+          className={styles["selector-search"]}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search..."
+            className={styles["selector-search-input"]}
+          />
+        </div>
+
         <List>
-          {props.items.map((item, i) => {
+          {filteredItems.map((item, i) => {
             const selected = selectedValues.includes(item.value);
             return (
               <ListItem
@@ -554,6 +581,7 @@ export function Selector<T>(props: {
     </div>
   );
 }
+
 export function FullScreen(props: any) {
   const { children, right = 10, top = 10, ...rest } = props;
   const ref = useRef<HTMLDivElement>();
