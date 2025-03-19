@@ -751,3 +751,29 @@
     }
   }
 }
+
+.chat-input-action.always-show-text {
+  width: auto !important;
+  min-width: 120px !important;
+  transition: none !important;
+  
+  .text {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    position: static !important;
+    white-space: nowrap !important;
+    transition: none !important;
+  }
+  
+  &:hover {
+    width: auto !important;
+    
+    .text {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+  }
+}

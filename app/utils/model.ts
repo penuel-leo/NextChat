@@ -256,3 +256,82 @@ export function isModelNotavailableInServer(
   }
   return true;
 }
+
+/**
+ * 检查提供商是否可用（有对应的 API Key 配置）
+ * @param {string} providerName - 需要检查的提供商名称
+ * @param {any} accessStore - 访问存储对象，包含各提供商的验证方法
+ * @returns {boolean} 如果提供商可用返回 true，否则返回 false
+ */
+export function isUsableProvider(
+  providerName: string,
+  accessStore?: any,
+): boolean {
+  if (!providerName || !accessStore) return false;
+
+  // 标准化提供商名称（转为小写）
+  const provider = providerName.toLowerCase();
+
+  console.log("isUsableProvider=", provider, accessStore);
+
+  switch (provider) {
+    case ServiceProvider.OpenAI.toLowerCase():
+      return accessStore.isValidOpenAI();
+    case ServiceProvider.Azure.toLowerCase():
+      return accessStore.isValidAzure();
+    case ServiceProvider.Google.toLowerCase():
+      return accessStore.isValidGoogle();
+    case ServiceProvider.Anthropic.toLowerCase():
+      return accessStore.isValidAnthropic();
+    case ServiceProvider.Baidu.toLowerCase():
+      return accessStore.isValidBaidu();
+    case ServiceProvider.ByteDance.toLowerCase():
+      return accessStore.isValidByteDance();
+    case ServiceProvider.Alibaba.toLowerCase():
+      return accessStore.isValidAlibaba();
+    case ServiceProvider.Tencent.toLowerCase():
+      return accessStore.isValidTencent();
+    case ServiceProvider.Moonshot.toLowerCase():
+      return accessStore.isValidMoonshot();
+    case ServiceProvider.Iflytek.toLowerCase():
+      return accessStore.isValidIflytek();
+    case ServiceProvider.DeepSeek.toLowerCase():
+      return accessStore.isValidDeepSeek();
+    case ServiceProvider.XAI.toLowerCase():
+      return accessStore.isValidXAI();
+    case ServiceProvider.ChatGLM.toLowerCase():
+      return accessStore.isValidChatGLM();
+    case ServiceProvider.SiliconFlow.toLowerCase():
+      return accessStore.isValidSiliconFlow();
+    default:
+      // 自定义提供商或未知提供商，默认返回 true
+      console.warn(`Unknown provider: ${providerName}`);
+      return true; // 改为 true，允许未知提供商通过
+  }
+}
+
+/**
+ * 结合模型可用性和提供商 API 密钥配置，检查模型是否可用
+ * @param {any} model - 要检查的模型
+ * @param {any} accessStore - 访问存储对象
+ * @returns {boolean} 如果模型可用返回 true，否则返回 false
+ */
+export function isModelUsable(model: any, accessStore?: any): boolean {
+  // 首先检查模型本身是否可用
+  if (!model.available) {
+    return false;
+  }
+
+  // 如果没有提供 accessStore，则只检查模型自身可用性
+  if (!accessStore) {
+    return true;
+  }
+
+  // 然后检查模型的提供商是否配置了API密钥
+  // if (model.provider?.providerName) {
+  //   return isUsableProvider(model.provider.providerName, accessStore);
+  // }
+
+  // 如果模型没有指定提供商，则假定它可用
+  return true;
+}

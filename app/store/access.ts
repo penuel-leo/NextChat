@@ -254,6 +254,7 @@ export const useAccessStore = createPersistStore(
       })
         .then((res) => res.json())
         .then((res) => {
+          console.log("[Config========] got config from server", res);
           const defaultModel = res.defaultModel ?? "";
           if (defaultModel !== "") {
             const [model, providerName] = getModelProvider(defaultModel);
