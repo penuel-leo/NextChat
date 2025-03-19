@@ -564,7 +564,14 @@ const tencentModels = [
   "hunyuan-vision",
 ];
 
-const moonshotModes = ["moonshot-v1-8k", "moonshot-v1-32k", "moonshot-v1-128k"];
+const moonshotModes = [
+  "moonshot-v1-8k",
+  "moonshot-v1-32k",
+  "moonshot-v1-128k",
+  "kimi-latest-8k",
+  "kimi-latest-32k",
+  "kimi-latest-128k",
+];
 
 const iflytekModels = [
   "general",
