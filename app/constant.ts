@@ -477,23 +477,13 @@ const openaiModels = [
   // As of July 2024, gpt-4o-mini should be used in place of gpt-3.5-turbo,
   // as it is cheaper, more capable, multimodal, and just as fast. gpt-3.5-turbo is still available for use in the API.
   "gpt-3.5-turbo",
-  "gpt-3.5-turbo-1106",
-  "gpt-3.5-turbo-0125",
   "gpt-4",
-  "gpt-4-0613",
-  "gpt-4-32k",
-  "gpt-4-32k-0613",
   "gpt-4-turbo",
   "gpt-4-turbo-preview",
   "gpt-4o",
-  "gpt-4o-2024-05-13",
-  "gpt-4o-2024-08-06",
-  "gpt-4o-2024-11-20",
   "chatgpt-4o-latest",
   "gpt-4o-mini",
-  "gpt-4o-mini-2024-07-18",
   "gpt-4-vision-preview",
-  "gpt-4-turbo-2024-04-09",
   "gpt-4-1106-preview",
   "dall-e-3",
   "o1-mini",
@@ -505,26 +495,12 @@ const googleModels = [
   "gemini-1.0-pro", // Deprecated on 2/15/2025
   "gemini-1.5-pro-latest",
   "gemini-1.5-pro",
-  "gemini-1.5-pro-002",
-  "gemini-1.5-pro-exp-0827",
   "gemini-1.5-flash-latest",
-  "gemini-1.5-flash-8b-latest",
   "gemini-1.5-flash",
-  "gemini-1.5-flash-8b",
-  "gemini-1.5-flash-002",
-  "gemini-1.5-flash-exp-0827",
-  "learnlm-1.5-pro-experimental",
-  "gemini-exp-1114",
-  "gemini-exp-1121",
-  "gemini-exp-1206",
   "gemini-2.0-flash",
   "gemini-2.0-flash-exp",
-  "gemini-2.0-flash-lite-preview-02-05",
   "gemini-2.0-flash-thinking-exp",
-  "gemini-2.0-flash-thinking-exp-1219",
-  "gemini-2.0-flash-thinking-exp-01-21",
   "gemini-2.0-pro-exp",
-  "gemini-2.0-pro-exp-02-05",
 ];
 
 const anthropicModels = [
@@ -568,6 +544,7 @@ const bytedanceModels = [
 ];
 
 const alibabaModes = [
+  "qwq-plus-latest",
   "qwen-turbo",
   "qwen-plus",
   "qwen-max",

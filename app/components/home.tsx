@@ -88,11 +88,20 @@ export function useSwitchTheme() {
   useEffect(() => {
     document.body.classList.remove("light");
     document.body.classList.remove("dark");
+    document.body.classList.remove("dark-friendly");
+    document.body.classList.remove("light-blue");
+    document.body.classList.remove("light-green");
 
     if (config.theme === "dark") {
       document.body.classList.add("dark");
     } else if (config.theme === "light") {
       document.body.classList.add("light");
+    } else if (config.theme === "dark-friendly") {
+      document.body.classList.add("dark-friendly");
+    } else if (config.theme === "light-blue") {
+      document.body.classList.add("light-blue");
+    } else if (config.theme === "light-green") {
+      document.body.classList.add("light-green");
     }
 
     const metaDescriptionDark = document.querySelector(
