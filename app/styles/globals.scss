@@ -45,21 +45,17 @@
 }
 
 @mixin dark-friendly {
-  --theme: dark-friendly;
+  --theme: dark;
 
   /* color */
   --white: rgb(60, 52, 46);
-  --black: rgb(245, 240, 230);
+  --black: rgb(249, 248, 246);
   --gray: rgb(48, 42, 36);
   --primary: rgb(214, 165, 119);
   --second: rgb(72, 60, 50);
   --hover-color: #4d4236;
 
-  --bar-color: rgba(245, 240, 230, 0.2);
-
-  /* shadow */
-  --shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  --card-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);
+  --bar-color: rgba(255, 255, 255, 0.1);
 
   /* stroke */
   --border-in-light: 1px solid rgba(214, 165, 119, 0.25);
@@ -67,7 +63,7 @@
   --theme-color: var(--gray);
 
   div:not(.no-dark) > svg {
-    filter: invert(0.6) sepia(0.2);
+    filter: invert(0.5);
   }
 }
 

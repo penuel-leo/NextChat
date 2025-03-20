@@ -90,6 +90,10 @@
   --color-danger-fg: #f85149;
 }
 
+@mixin dark-friendly {
+  @include dark;
+}
+
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -107,6 +111,10 @@
 
 .dark {
   @include dark;
+}
+
+.dark-friendly {
+  @include dark-friendly;
 }
 
 :root {

@@ -1187,6 +1187,22 @@ function _Chat() {
       e.preventDefault();
       return;
     }
+
+    // 当输入框有内容且按下回车键时提交（没有按下其他修饰键如Shift、Ctrl等）
+    if (
+      e.key === "Enter" &&
+      userInput.trim().length > 0 &&
+      !e.shiftKey &&
+      !e.altKey &&
+      !e.ctrlKey &&
+      !e.metaKey &&
+      promptHints.length === 0
+    ) {
+      doSubmit(userInput);
+      e.preventDefault();
+      return;
+    }
+
     if (shouldSubmit(e) && promptHints.length === 0) {
       doSubmit(userInput);
       e.preventDefault();
